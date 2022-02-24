@@ -1,0 +1,22 @@
+name: CI
+on: 
+  push:
+    branches:
+      - otax/production
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [8, 14]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cypress run
+      uses: cypress-io/github-action@v2
+      with:
+        build: npm run build
+        start: npm start
+        tag: node-${{ matrix.node-version }}
