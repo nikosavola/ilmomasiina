@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - otax/production
+      - cypress-ci  # DEBUG
   pull_request:
 
 jobs:
